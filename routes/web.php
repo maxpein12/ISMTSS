@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Backend\CommunityController;
-use App\Http\Controllers\Frontend\SubccommunityController;
+use App\Http\Controllers\Backend\CommunityPostController;
+use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/p/{slug}', [SubccommunityController::class, 'show'])->name('subcommunity.show');
+Route::get('/p/{slug}', [FrontendCommunityController::class, 'show'])->name('frontend.communities.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function(){
 
@@ -34,7 +35,7 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
 
 
     Route::resource( name: '/dashboard/communities', controller:CommunityController::class);
-
+    Route::resource('/communities.posts', CommunityPostController::class);
 
 });
 

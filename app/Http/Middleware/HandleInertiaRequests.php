@@ -34,6 +34,7 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                'auth_check' => auth()->check()
             ],
             'ziggy' => fn () => [
                 ...(new Ziggy)->toArray(),
