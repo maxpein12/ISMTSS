@@ -6,6 +6,8 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
+defineProps({ errors: Object })
+
 const form = useForm({
     name: '',
     username: '',
@@ -38,7 +40,7 @@ const submit = () => {
                     autocomplete="name"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <InputError :message="errors.name" />
             </div>
 
             <div class="mt-4">
@@ -52,7 +54,7 @@ const submit = () => {
                     autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.username" />
+                <InputError :message="errors.name" />
             </div>
 
             <div class="mt-4">
@@ -66,7 +68,7 @@ const submit = () => {
                     autocomplete="email"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError :message="errors.name" />
             </div>
 
             <div class="mt-4">
@@ -80,7 +82,7 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password" />
+                <InputError :message="errors.name" />
             </div>
 
             <div class="mt-4">
@@ -94,7 +96,7 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                <InputError :message="errors.name" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
