@@ -54,7 +54,7 @@ const submit = () => {
                     autocomplete="username"
                 />
 
-                <InputError :message="errors.name" />
+                <InputError :message="errors.username" />
             </div>
 
             <div class="mt-4">
@@ -68,7 +68,7 @@ const submit = () => {
                     autocomplete="email"
                 />
 
-                <InputError :message="errors.name" />
+                <InputError :message="errors.email" />
             </div>
 
             <div class="mt-4">
@@ -82,7 +82,7 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError :message="errors.name" />
+                <InputError :message="errors.password" />
             </div>
 
             <div class="mt-4">
@@ -96,7 +96,7 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError :message="errors.name" />
+                <InputError :message="errors.password_confirmation" />
             </div>
 
             <div class="flex items-center justify-end mt-4">
