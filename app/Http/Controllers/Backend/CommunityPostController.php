@@ -44,9 +44,8 @@ class CommunityPostController extends Controller
     }
     public function destroy(Community $community, Post $post) 
     {
-         $this->authorize('delete', $post);
+        $this->authorize('delete', $post);
         $post->delete();
-
-        return Redirect::route('frontend.communities.posts.show', [$community->slug, $post->slug]);
+        return Redirect::route('frontend.communities.show', $community->slug);
     }
 }
