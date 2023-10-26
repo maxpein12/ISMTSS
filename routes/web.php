@@ -30,9 +30,7 @@ Route::get('/p/{slug}', [FrontendCommunityController::class, 'show'])->name('fro
 Route::get('/p/{community_slug}/posts/{post:slug}', [PostController::class, 'show'])->name('frontend.communities.posts.show');
 
 Route::group(['middleware' => ['auth', 'verified']], function(){
-
-
-    Route::resource( name: '/communities', controller:CommunityController::class);
+    Route::resource('/communities', controller:CommunityController::class);
     Route::resource('/communities.posts', CommunityPostController::class);
 
 });
