@@ -8,10 +8,10 @@
       rounded-lg
       border border-gray-200
       shadow-md
-      dark:bg-gray-800 dark:border-gray-700
+      white
       "
     >
-      <div class="mr-3">upvote
+      <div class="mr-3 m-2 p-3 ">upvote
       </div>
       <div>
         <div class="flex m-2 p-2 ">
@@ -45,8 +45,10 @@
         </p>
         <div class="flex m-2 p-2">
           <p class="mr-4 p-2">Comments(2)</p>
-          <a
-            href="#"
+          <Link
+            :href="
+              route('frontend.communities.posts.show', [community, post.slug])
+              "
             class="
               inline-flex
               items-center
@@ -76,7 +78,7 @@
                 clip-rule="evenodd"
               ></path>
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
