@@ -61,6 +61,7 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
+                                      
                                         
                                         <DropdownLink :href="route('communities.index')">
                                             Communities
