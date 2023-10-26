@@ -31,10 +31,60 @@
         </div>
     </div>
     <div class="p-2">
+        
         <h1 class="font-semibold text-3xl text-black">{{ post.data.title }}</h1>
    <p class="text-slate-700 my-2">{{ post.data.description }}</p>
    <a :href="post.data.url" class="font-semibold text-blue-500 text-sm hover:text-blue-300">{{ post.data.url }}</a>
-    </div>
+
+</div>
+
+<hr>
+
+<div>
+    <ul role="list" class="divide-y divide-gray-200 m-2 p-2">
+                <li
+                  v-for="(comment, index) in post.data.comments"
+                  :key="index"
+                  class="py-4 flex flex-col"
+                >
+                  <div class="text-sm">
+                    Commented by
+                    <span class="font-semibold ml-1 text-slate-700">{{
+                      comment.username
+                    }}</span>
+                  </div>
+                  <div class="text-slate-600 m-2 p-2">
+                    {{ comment.content }}
+                  </div>
+                </li>
+              </ul>
+</div>
+
+<hr>
+<div v-if="$page.props.auth.auth_check">
+
+    <form class="m-2 p-2 max-w-md" @submit.prevent="submit">
+        <div class="mt-2">
+            <label for="comment" class="block mb-2 text-sm font-md text-gray-900 dark:text-gray-400">Your Comment</label>
+            <textarea v-model="form.content" id="comment" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300
+                      focus:ring-blue-500 focus:border-blue-500
+                    
+                      dark:border-gray-600
+                      dark:placeholder-gray-400
+                      dark:text-gray-900
+                      dark:focus:ring-blue-500
+                      dark:focus:border-blue-500">Your Comment...</textarea>
+        </div>
+        <div class="mt-2">
+            <button class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded-md">Comment</button>
+        </div>
+    </form>
+
+</div>
+
+    
+    
+    
 </div>
    </div>
    <div class="w-full md:w-4/12 p-4">
@@ -49,12 +99,28 @@
   
   <script setup>
   import GuestLayout from "@/Layouts/GuestLayout.vue";
-  import PostCard from "@/Components/PostCard.vue";
-  import { Link } from "@inertiajs/vue3";
-  import Pagination from "@/Components/Pagination.vue";
-  defineProps({
+
+  import { Link, useForm } from "@inertiajs/vue3";
+
+
+
+  const props = defineProps({
       community: Object,
       post: Object, 
   });
-  </script>
-  
+
+
+  const form = useForm({
+    content: "",
+   
+
+
+});
+
+const submit = () => {
+    form.post(route('frontend.posts.comments', [props.community.slug, props.post.data.slug]), {
+      onSuccess: () => form.reset("content"),
+    }
+  );
+};
+</script>
