@@ -13,9 +13,7 @@
     </div> 
     <div class="flex m-2 bg-white text-slate-400">
    <div>
-    <PostVote :post="post.data"/>
-
-    
+    <!-- <PostVote :post="post.data" /> -->
    </div>
    <div class="w-full">
     <div class="flex flex-col md:flex-row justify-between m-2">
@@ -105,6 +103,7 @@
   </template>
   
   <script setup>
+  
   import PostVote from "@/Components/PostVote.vue";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 

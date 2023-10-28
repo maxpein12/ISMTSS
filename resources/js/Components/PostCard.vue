@@ -20,8 +20,8 @@
         >
         <div class="flex">
           Posted by
-          <span class="font-semibold ml-1">{{ post.username }}</span>
-          {{ post.created_at }}
+          <span class="font-semibold ml-1">{{ post.username }} </span>
+            {{ post.created_at }}
         </div>
       </div>
       <a
@@ -45,7 +45,7 @@
         {{ post.description }}
       </p>
       <div class="flex m-2 p-2">
-        <p class="mr-4 p-2">Comments(2)</p>
+        <p class="mr-4 p-2">Comments ({{ post.comments_count }})</p>
         <Link
           :href="
             route('frontend.communities.posts.show', [community, post.slug])
