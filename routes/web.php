@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\CommunityController;
 use App\Http\Controllers\Backend\CommunityPostController;
+use App\Http\Controllers\Backend\PostVoteController;
 use App\Http\Controllers\Frontend\CommunityController as FrontendCommunityController;
 use App\Http\Controllers\Frontend\PostCommentController;
 use App\Http\Controllers\Frontend\PostController;
@@ -18,7 +19,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 
 Route::middleware('auth')->group(function () {
@@ -37,7 +38,8 @@ Route::group(['middleware' => ['auth', 'verified']], function(){
 
     Route::resource('/communities', controller:CommunityController::class);
     Route::resource('/communities.posts', CommunityPostController::class);
- 
+    Route::post('/posts/{post:slug}/upVote', [PostVoteController::class, 'upVote'])->name('posts.upVote');
+    Route::post('/posts/{post:slug}/downVote', [PostVoteController::class, 'downVote'])->name('posts.downVote');
 });
 
 require __DIR__.'/auth.php';

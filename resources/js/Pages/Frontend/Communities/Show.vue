@@ -1,6 +1,6 @@
 <template>
-  <guest-layout>
-    <template #header>
+<authenticated-layout>
+  <template #header>
             
             <div class="flex justify-between m-2 p-2">
               <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -32,12 +32,12 @@
   </div>
  </div>
 </section>
-  </guest-layout>
+</authenticated-layout>
 
 </template>
 
 <script setup>
-import GuestLayout from "@/Layouts/GuestLayout.vue";
+  import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import PostCard from "@/Components/PostCard.vue";
 import { Link } from "@inertiajs/vue3";
 import Pagination from "@/Components/Pagination.vue";

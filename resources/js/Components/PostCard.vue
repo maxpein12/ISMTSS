@@ -11,7 +11,8 @@
     white
     "
   >
-    <div class="mr-3 m-2 p-3 ">upvote
+    <div class="mr-3 m-2 p-3 ">
+      <PostVote :post="post"/>
     </div>
     <div>
       <div class="flex m-2 p-2 ">
