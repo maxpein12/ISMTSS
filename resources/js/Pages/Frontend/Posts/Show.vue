@@ -1,5 +1,5 @@
 <template>
-  <guest-layout>
+  <GuestLayout>
     <section class="flex flex-col md:flex-row m-2 p-2">
       <div class="w-full md:w-8/12">
         <div class="mx-2 p-2 bg-white rounded-lg">
@@ -11,7 +11,7 @@
         </div>
         <div class="flex m-2 bg-white rounded-lg text-sm text-slate-400">
           <div>
-            <!-- <PostVote :post="post.data" /> -->
+            <PostVote :post="post.data" />
           </div>
           <div class="w-full">
             <div class="flex flex-col md:flex-row justify-between m-2">
@@ -22,7 +22,7 @@
                 }}</span>
                 {{ post.data.created_at }}
               </div>
-              <div v-if="$page.props.auth.auth_check">
+              <div v-if="$page.props.auth.auth_check ">
                 <Link
                   v-if="can_update"
                   :href="
@@ -157,11 +157,12 @@
         </PostList>
       </div>
     </section>
-  </guest-layout>
+  </GuestLayout>
 </template>
 
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Link, useForm } from "@inertiajs/vue3";
 import PostVote from "@/Components/PostVote.vue";
 import PostList from "@/Components/PostList.vue";

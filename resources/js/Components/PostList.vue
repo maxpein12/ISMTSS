@@ -4,7 +4,7 @@
       <h2 class="font-semibold text-lg p-6 bg-indigo-700 text-white rounded-lg">
         <slot name="title" />
       </h2>
-      <ul role="list" class="divide-y divide-slate-300 dark:divide-slate-700 p-4">
+      <ul role="list" class="divide-y divide-slate-300 p-4">
         <li
           v-for="post in posts"
           :key="post.id"
